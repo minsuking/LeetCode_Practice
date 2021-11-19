@@ -59,7 +59,7 @@ def trailingZeroes(self, n: int) -> int:
         current_multiple *= 5
     return zero_count
 ```
-
+![3-3](https://user-images.githubusercontent.com/60283244/142563170-d596a880-c0fb-4492-802b-35889b3fdbd8.JPG)
 ```python
 def trailingZeroes(self, n: int) -> int:
     zero_count = 0
