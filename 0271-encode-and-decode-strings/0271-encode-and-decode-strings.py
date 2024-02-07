@@ -1,6 +1,6 @@
 class Codec:
     def __init__(self):
-        self.key = chr(257)
+        self.key = '\uAC00'
         
     def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
