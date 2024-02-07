@@ -1,6 +1,6 @@
 class Codec:
     def __init__(self):
-        self.key = '\uAC00'
+        self.key = '\uAC00' #'가'의 유니코드값
         
     def encode(self, strs: List[str]) -> str:
         """Encodes a list of strings to a single string.
