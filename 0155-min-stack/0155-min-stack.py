@@ -1,16 +1,25 @@
-#Leo
+## SK
 class MinStack:
 
     def __init__(self):
-        self.storage = []
+        self.stack = []
+        self.mini = float('inf')
+
     def push(self, val: int) -> None:
-        min_val = min(val, self.getMin() if self.storage else val)
-        self.storage.append((val, min_val))
+        if val < self.mini:
+            self.mini = val
+        self.stack.append(val)
+
     def pop(self) -> None:
-        return self.storage.pop()
+        p = self.stack.pop()
+        if self.stack and p == self.mini:
+            self.mini = min(self.stack)
+        elif not self.stack:
+            self.mini = float('inf')
+        return p
 
     def top(self) -> int:
-        return self.storage[-1][0]
+        return self.stack[-1]
 
     def getMin(self) -> int:
-        return self.storage[-1][1]
+        return self.mini
