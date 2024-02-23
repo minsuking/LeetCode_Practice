@@ -1,31 +1,16 @@
+#Leo
 class MinStack:
 
     def __init__(self):
-        self.stack = []
-        self.minStack = []
-        
+        self.storage = []
     def push(self, val: int) -> None:
-        self.stack.append(val)
-        if len(self.minStack) == 0:
-            self.minStack.append(val)
-        elif val <= self.minStack[-1]:
-            self.minStack.append(val)
-
+        min_val = min(val, self.getMin() if self.storage else val)
+        self.storage.append((val, min_val))
     def pop(self) -> None:
-        v = self.stack.pop()
-        if v == self.minStack[-1]:
-            self.minStack.pop()
+        return self.storage.pop()
 
     def top(self) -> int:
-        return self.stack[-1]
+        return self.storage[-1][0]
 
     def getMin(self) -> int:
-        return self.minStack[-1]
-
-
-# Your MinStack object will be instantiated and called as such:
-# obj = MinStack()
-# obj.push(val)
-# obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.getMin()
+        return self.storage[-1][1]
