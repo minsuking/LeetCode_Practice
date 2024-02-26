@@ -1,20 +1,17 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        if n == 0:
-            return []
-
-        result = []
+        
+        res = []
         stack = [("(", 1, 0)]
 
         while stack:
-            s, open_count, close_count = stack.pop()
-            if open_count == close_count == n:
-                result.append(s)
+            s, open, close = stack.pop()
+            if open == close == n:
+                res.append(s)
             else:
-                if open_count < n:
-                    stack.append((s + "(", open_count + 1, close_count))
-                if close_count < open_count:
-                    stack.append((s + ")", open_count, close_count + 1))
+                if open < n:
+                    stack.append((s + "(", open + 1, close))
+                if close < open:
+                    stack.append((s + ")", open, close + 1))
 
-        return result
-        
+        return res
